@@ -12,6 +12,7 @@ const budgetData = [
     debt: 300
   }
 ]
+
 const newExpense = {
   name: "",
   amount: "",
@@ -30,17 +31,19 @@ function App() {
         {budgetData.map((el) => {
           return(
       <Budget
-        housingData={el.housing}
-        foodData={el.food}
-        insuranceData={el.insurance}
-        personalSpendingData={el.personalSpending}
-        savingsData={el.savings}
-        debtData={el.debt}
+      // budgetDataProps={budgetData}
+        housingData={budgetData.housing}
+        foodData={budgetData.food}
+        insuranceData={budgetData.insurance}
+        personalSpendingData={budgetData.personalSpending}
+        savingsData={budgetData.savings}
+        debtData={budgetData.debt}
       />
           )
         })
-        }
+        } 
       </div>
+      <div>
       <Expense
         elistProps={elist}
         seteListProps={seteList}
@@ -48,6 +51,7 @@ function App() {
         allExpensesProps={allExpenses}
         setAllExpensesProps={setAllExpenses}
       />
+      </div>
     </div>
   );
 }

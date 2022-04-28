@@ -19,7 +19,7 @@ const Expense = (props) => {
     }
 
     return (
-        <div>
+        <div className="theExpense">
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
