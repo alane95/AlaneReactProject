@@ -19,7 +19,7 @@ const Expense = (props) => {
     }
 
     return (
-        <div className="theExpense">
+        <div className="theExpenses">
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -34,26 +34,37 @@ const Expense = (props) => {
                     placeholder="Spending Amount"
                     onChange={handleChange} />
                 <input
-                    type="month"
+                    type="datetime-local"
                     name="month"
                     value={props.elistProps.month}
                     placeholder="Month"
                     onChange={handleChange} />
+                {/* <input type="text"
+                    name="category"
+                    onChange={handleChange}
+                /> */}
+                {/* <label>Choose a category:</label> */}
+                <select >
+                    <option value={props.elistProps.cate}></option>
+                    
+                </select>
                 <button type="submit">
                     Add Expenses
                 </button>
             </form>
-            {/* <ul>
+            <ul>
                 {
-                   props.elistProps.map((item) => {
+                    props.allExpensesProps.map((item) => {
                         return (
                             <li>
-                                {item}
+                               <h2>{item.name}</h2> 
+                                <p>${item.amount}</p>
+                                {item.month}
                             </li>
                         )
                     })
                 }
-            </ul> */}
+            </ul>
         </div>
     )
 

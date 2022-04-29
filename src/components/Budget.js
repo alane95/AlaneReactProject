@@ -1,26 +1,62 @@
 const Budget = (props) => {
 
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        // console.log(props.bitemProps)
+        props.setbItemProps({
+            ...props.bitemProps,
+            [name]: value
+        })
+
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        props.setbListProps([
+            ...props.blistProps, props.bitemProps
+        ])
+    //     console.log(props.blistPropps)
+    }
+   
     return (
-        <div>
-            {/* <form>
-                <input type="text" placeholder="name" />
-                <input type= "number" placeholder="Spending Amount"/>
-           <button>Add Budget </button>
-           </form> */}
-            {/* {
-             budgetDataProps.map((el) => {
-          return(
-              <> */}
-           <h2 className="h">props.housingData</h2>
-           <h2 className="f">props.foodData</h2>
-           <h2 className="i">props.insuranceData</h2>
-           <h2 className="p">props.personalSpendingData</h2>
-           <h2 className="s">props.savingData</h2>
-           <h2 className="d">props.debtData</h2>
-           {/* </>
-          )
-            })
-        } */}
+        <div className="budgeting">
+          <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    name="name"
+                    value={props.bitemProps.name}
+                    placeholder="name"
+                    onChange={handleChange} />
+                <input
+                    type="number"
+                    name="amount"
+                    value={props.bitemProps.amount}
+                    placeholder="Spending Amount"
+                    onChange={handleChange} />
+                <input
+                    type="month"
+                    name="month"
+                    value={props.bitemProps.month}
+                    placeholder="Month"
+                    onChange={handleChange} />
+                <button type="submit">
+                    Add Budget
+                </button>
+            </form>
+            <ul>
+                {
+                   props.blistProps.map((item) => {
+                        return (
+                            <li>
+                                {item.name}
+                                {item.amount}
+                                {item.month}
+                            </li>
+                        )
+                    })
+                }
+            </ul>   
+            
+          
         </div>
     )
 
