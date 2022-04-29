@@ -2,15 +2,15 @@ import { useState } from 'react'
 import './App.css';
 import Budget from './components/Budget'
 import Expense from './components/Expense'
-const budgetData =
-{
-  housing: 1500,
-  food: 300,
-  insurance: 200,
-  personalSpending: 200,
-  savings: 200,
-  debt: 300,
-}
+// const budgetData =
+// {
+//   housing: 1500,
+//   food: 300,
+//   insurance: 200,
+//   personalSpending: 200,
+//   savings: 200,
+//   debt: 300,
+// }
 
 
 const newExpense = {

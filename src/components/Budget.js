@@ -41,7 +41,7 @@ const Budget = (props) => {
                     type="number"
                     name="amount"
                     value={props.bitemProps.amount}
-                    placeholder="Spending Amount"
+                    placeholder="Budget Amount"
                     onChange={handleChange} />
                 <input
                     type="month"
