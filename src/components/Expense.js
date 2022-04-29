@@ -1,4 +1,4 @@
-
+import { useEffect } from "react"
 
 const Expense = (props) => {
     const handleSubmit = (e) => {
@@ -6,8 +6,18 @@ const Expense = (props) => {
         props.setAllExpensesProps([
             ...props.allExpensesProps, props.elistProps
         ])
-        console.log(props.allExpensesProps)
-    }
+        
+}
+const sumExpense = () =>{
+    let sum = 0
+    props.allExpensesProps.forEach(element => {
+        sum = sum + Number(element.amount);
+    });
+    props.setExpenseSumProps(sum)
+//     console.log(props.allExpensesProps)
+}
+    useEffect(sumExpense, [props.allExpensesProps])
+
     const handleChange = (e) => {
         const { name, value } = e.target
         console.log(props.elistProps)
@@ -45,8 +55,11 @@ const Expense = (props) => {
                 /> */}
                 {/* <label>Choose a category:</label> */}
                 <select >
-                    <option value={props.elistProps.cate}></option>
-                    
+                    <option value={props.elistProps.cate}>housing</option>
+                    <option value={props.elistProps.cate}>food</option>
+                    <option value={props.elistProps.cate}>insurance</option>
+                    <option value={props.elistProps.cate}>personal spending</option>
+                    <option value={props.elistProps.cate}>savings</option>
                 </select>
                 <button type="submit">
                     Add Expenses
@@ -60,11 +73,13 @@ const Expense = (props) => {
                                <h2>{item.name}</h2> 
                                 <p>${item.amount}</p>
                                 {item.month}
+                                {/* <h6>{item.category}</h6> */}
                             </li>
                         )
                     })
                 }
             </ul>
+           
         </div>
     )
 

@@ -7,30 +7,23 @@ body{
   
 }
 
-/* h1{
-  background-color: white;
-} */
-/* .budgeting{
-  display: flex;
-  border: 1px solid white;
-  flex-flow: column wrap;
-  background-color: white;
-  
-} */
+/
 li {
   list-style-type:none
  }
-/* .budgeting{ */
 
- 
-/* input[type=text]{
-  width: 25%;
-  padding: 12px 20px;
-  box-sizing: border-box;
-} */
 form {
   width: 200px;
   display: flex;
   flex-direction: column;
   margin: 5px 0;
+  padding-left: 8px;
+}
+
+ul{
+  /* border: 1px solid black; */
+  background-color: white;
+  border-radius: 15px;
+  /* width: 100px;
+  height: 150px; */
 }

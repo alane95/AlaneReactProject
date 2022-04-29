@@ -31,6 +31,9 @@ function App() {
   const [bitem, setbItem]= useState(budgetItem)
   const [elist, seteList] = useState(newExpense)
   const [allExpenses, setAllExpenses] = useState([])
+  const [budgetSum, setBudgetSum] = useState(0)
+  const [expenseSum, setExpenseSum] = useState(0)
+
 
   // const[allBudgetItems, setAllBudgetItems]= useState([])
   const [show, setShow] = useState(true)
@@ -45,8 +48,11 @@ function App() {
         setbListProps={setbList}
         bitemProps ={bitem}
         setbItemProps = {setbItem}
+        budgetSumProps = {budgetSum}
+        setBudgetSumProps = {setBudgetSum}
       />
-
+       <h4>Monthly Budget:{budgetSum}</h4> 
+{/* <p>{budgetSum}</p> */}
       <Expense
         elistProps={elist}
         seteListProps={seteList}
@@ -55,8 +61,11 @@ function App() {
         setAllExpensesProps={setAllExpenses}
         showProps = {show}
         setShowProps = {setShow}
+        expenseSumProps = {setExpenseSum}
+        setExpenseSumProps = {setExpenseSum}
       />
-
+      <h3>Monthly Expense Total: {expenseSum}</h3> 
+     
     </div>
   );
 }

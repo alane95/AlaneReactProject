@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 const Budget = (props) => {
 
     const handleChange = (e) => {
@@ -14,12 +16,21 @@ const Budget = (props) => {
         props.setbListProps([
             ...props.blistProps, props.bitemProps
         ])
-    //     console.log(props.blistPropps)
     }
-   
+    const sumBudget = () =>{
+        let sum = 0
+        props.blistProps.forEach(element => {
+            sum = sum + Number(element.amount);
+        });
+        props.setBudgetSumProps(sum)
+        // console.log(props.blistProps)
+    
+    }
+    useEffect(sumBudget, [props.blistProps])
+
     return (
         <div className="budgeting">
-          <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     name="name"
@@ -38,25 +49,26 @@ const Budget = (props) => {
                     value={props.bitemProps.month}
                     placeholder="Month"
                     onChange={handleChange} />
+                    
                 <button type="submit">
                     Add Budget
                 </button>
             </form>
             <ul>
                 {
-                   props.blistProps.map((item) => {
+                    props.blistProps.map((item) => {
                         return (
                             <li>
-                                {item.name}
-                                {item.amount}
+                               <h2>{item.name}</h2> 
+                                <p>${item.amount}</p>
                                 {item.month}
                             </li>
                         )
                     })
                 }
-            </ul>   
-            
-          
+            </ul>
+
+
         </div>
     )
 
