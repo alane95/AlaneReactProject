@@ -17,23 +17,31 @@ import ExpenseTotal from './components/ExpenseTotal'
 const newExpense = {
   name: "",
   amount: "",
-  category: ["housing", "food", "insurance", "personal spending", "savings"],
+  category: ["housing", "food", "insurance", "personal spending", "savings", "side projects"],
   month: "",
+  totals: {
+    housing: 50,
+    food: 0,
+    insurance: 0,
+    personalSpending: 0,
+    savings: 0,
+    sideProjects: 0, 
+  }
 }
 const budgetItem = {
   name: "",
   amount: "",
-  category: ["housing", "food", "insurance", "personal spending", "savings"],
+  category: ["housing", "food", "insurance", "personal spending", "savings", "side projects" ],
   month: "",
 }
-const expenseCategoryTotals = {
-  foodExpenses: [],
-  housingExpenses: [],
-  insuranceExpenses: [],
-  personalSpendingExpenses: [],
-  savingsExpenses: []
+// const expenseCategoryTotals = {
+//   foodExpenses: [],
+//   housingExpenses: [],
+//   insuranceExpenses: [],
+//   personalSpendingExpenses: [],
+//   savingsExpenses: []
 
-}
+// }
 function App() {
   // 
   const [blist, setbList] = useState([])
@@ -42,14 +50,15 @@ function App() {
   const [allExpenses, setAllExpenses] = useState([])
   const [budgetSum, setBudgetSum] = useState(0)
   const [expenseSum, setExpenseSum] = useState(0)
-const [theExpenses, setTheExpenses] = useState(expenseCategoryTotals)
+  const [categoryExpenses, setCategoryExpenses] = useState(newExpense)
+
   const foodExpenses = allExpenses.filter((item)=>
     allExpenses.category === "food"
   )
 
-  const housingExpenses = allExpenses.filter((item)=>
-    allExpenses.category === "housing"
-  )
+  // const housingExpenses = allExpenses.filter((item)=>
+  //   allExpenses.category === "housing"
+  // )
 
   const insuranceExpenses = allExpenses.filter((item)=>
     allExpenses.category === "insurance"
@@ -62,7 +71,7 @@ const [theExpenses, setTheExpenses] = useState(expenseCategoryTotals)
   allExpenses.category === "savings"
 )
   
-console.log(housingExpenses)
+// console.log(housingExpenses)
   // const[allBudgetItems, setAllBudgetItems]= useState([])
   const [show, setShow] = useState(true)
   return (
@@ -89,13 +98,13 @@ console.log(housingExpenses)
         setAllExpensesProps={setAllExpenses}
         showProps = {show}
         setShowProps = {setShow}
-        expenseSumProps = {setExpenseSum}
+        expenseSumProps = {expenseSum}
         setExpenseSumProps = {setExpenseSum}
-        setTheExpensesProps = {setTheExpenses}
-        theExpensesProps = {theExpenses}
+        setCategoryExpensesProps = {setCategoryExpenses}
+        categoryExpensesProps = {categoryExpenses}
       />
       <h3>Monthly Expense Total: {expenseSum}</h3> 
-<>
+<div className='expenseBoard'>
 {
       newExpense.category.map((item) => {
         return(
@@ -103,9 +112,9 @@ console.log(housingExpenses)
         )
       })
          }
-          {expenseSum}
+          {/* {expenseSum} */}
          
-</> 
+</div> 
     </div>
   );
 }

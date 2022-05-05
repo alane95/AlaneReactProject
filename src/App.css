@@ -30,12 +30,16 @@ ul{
 }
 
 .expenseTotal {
-  margin: 150px auto;
+  margin:  auto;
   width: 150px;
   height: 150px;
   background: #fefcff;
   border-radius: 50%;
   border: 1px solid #cdcbd0;
-  display: flex;
-  
+}
+.expenseBoard{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin: auto;
 }

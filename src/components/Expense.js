@@ -6,7 +6,8 @@ const Expense = (props) => {
         props.setAllExpensesProps([
             ...props.allExpensesProps, props.elistProps
         ])
-
+// console.log(props.allExpensesProps)
+// console.log(props.elistProps    )
     }
     const sumExpense = () => {
         let sum = 0
@@ -14,17 +15,22 @@ const Expense = (props) => {
             sum = sum + Number(element.amount);
         });
         props.setExpenseSumProps(sum)
-        //     console.log(props.allExpensesProps)
+            // console.log(props.allExpensesProps)
     }
     useEffect(sumExpense, [props.allExpensesProps])
     const updateCategoryTotals = () => {
         const housingExpenses = props.allExpensesProps.filter((item) =>
-            props.allExpensesProps.category === "housing"
+            item.category == "housing"
         )
-        props.setTheExpensesProps([
-            ...props.theExpensesProps.housingExpenses, housingExpenses
-        ])
-        console.log(props.theExpensesProps)
+        let housingSum = 0
+        housingExpenses.forEach(element => {
+            housingSum = housingSum + Number(element.amount);
+        })
+        let {totals:{housing}} = props.categoryExpensesProps
+        props.setCategoryExpensesProps({
+            ...props.categoryExpensesProps, [{totals:{housing}}]: housingSum
+        })
+        // console.log(myhousing)
     }
     useEffect(updateCategoryTotals, [props.allExpensesProps])
     const handleChange = (e) => {
