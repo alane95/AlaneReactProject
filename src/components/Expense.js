@@ -6,27 +6,41 @@ const Expense = (props) => {
         props.setAllExpensesProps([
             ...props.allExpensesProps, props.elistProps
         ])
-        
-}
-const sumExpense = () =>{
-    let sum = 0
-    props.allExpensesProps.forEach(element => {
-        sum = sum + Number(element.amount);
-    });
-    props.setExpenseSumProps(sum)
-//     console.log(props.allExpensesProps)
-}
-    useEffect(sumExpense, [props.allExpensesProps])
 
+    }
+    const sumExpense = () => {
+        let sum = 0
+        props.allExpensesProps.forEach(element => {
+            sum = sum + Number(element.amount);
+        });
+        props.setExpenseSumProps(sum)
+        //     console.log(props.allExpensesProps)
+    }
+    useEffect(sumExpense, [props.allExpensesProps])
+    const updateCategoryTotals = () => {
+        const housingExpenses = props.allExpensesProps.filter((item) =>
+            props.allExpensesProps.category === "housing"
+        )
+        props.setTheExpensesProps([
+            ...props.theExpensesProps.housingExpenses, housingExpenses
+        ])
+        console.log(props.theExpensesProps)
+    }
+    useEffect(updateCategoryTotals, [props.allExpensesProps])
     const handleChange = (e) => {
         const { name, value } = e.target
-        console.log(props.elistProps)
+        // console.log(props.elistProps)
         props.seteListProps({
             ...props.elistProps,
             [name]: value
         })
 
     }
+
+    // const handleRemove = (key) => {
+    //     props.setAllExpensesProps(props.allExpensesProps.filter((ex) => props.allExpensesProps.indexOf(ex) !== key))
+    //   }
+
 
     return (
         <div className="theExpenses">
@@ -44,7 +58,7 @@ const sumExpense = () =>{
                     placeholder="Spending Amount"
                     onChange={handleChange} />
                 <input
-                    type="datetime-local"
+                    type="date"
                     name="month"
                     value={props.elistProps.month}
                     placeholder="Month"
@@ -54,7 +68,8 @@ const sumExpense = () =>{
                     onChange={handleChange}
                 /> */}
                 {/* <label>Choose a category:</label> */}
-                <select >
+                <select onChange={handleChange} name="category" required>
+                    <option value={props.elistProps.cate}></option>
                     <option value={props.elistProps.cate}>housing</option>
                     <option value={props.elistProps.cate}>food</option>
                     <option value={props.elistProps.cate}>insurance</option>
@@ -67,19 +82,24 @@ const sumExpense = () =>{
             </form>
             <ul>
                 {
-                    props.allExpensesProps.map((item) => {
+                    props.allExpensesProps.map((item, key) => {
                         return (
-                            <li>
-                               <h2>{item.name}</h2> 
+                            <li key={key}>
+                                <h2>{item.name}</h2>
                                 <p>${item.amount}</p>
                                 {item.month}
                                 {/* <h6>{item.category}</h6> */}
+                                <p className="X-button" onClick={() => {
+                                    props.setAllExpensesProps(props.allExpensesProps.filter((ex) => props.allExpensesProps.indexOf(ex) !== key))
+                                    // conole.log(props.allExpensesProps)
+                                }
+                                }>X</p>
                             </li>
                         )
                     })
                 }
             </ul>
-           
+
         </div>
     )
 
