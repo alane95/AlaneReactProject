@@ -26,11 +26,13 @@ const Expense = (props) => {
         housingExpenses.forEach(element => {
             housingSum = housingSum + Number(element.amount);
         })
-        let {totals:{housing}} = props.categoryExpensesProps
+        let {totals:{housing:myHousing}} = props.categoryExpensesProps
+        let {totals:myTotals} = props.categoryExpensesProps
+        myHousing=housingSum
         props.setCategoryExpensesProps({
-            ...props.categoryExpensesProps, [{totals:{housing}}]: housingSum
+            ...props.categoryExpensesProps, totals:{...myTotals, housing:myHousing}  
         })
-        // console.log(myhousing)
+        console.log(props.categoryExpensesProps)
     }
     useEffect(updateCategoryTotals, [props.allExpensesProps])
     const handleChange = (e) => {

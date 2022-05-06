@@ -36,10 +36,12 @@ ul{
   background: #fefcff;
   border-radius: 50%;
   border: 1px solid #cdcbd0;
+  display: flex;
+  justify-content: space-evenly;
 }
 .expenseBoard{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  margin: auto;
+  /* /* margin: 8px; */
 }

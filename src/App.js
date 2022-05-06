@@ -20,7 +20,7 @@ const newExpense = {
   category: ["housing", "food", "insurance", "personal spending", "savings", "side projects"],
   month: "",
   totals: {
-    housing: 50,
+    housing: 0,
     food: 0,
     insurance: 0,
     personalSpending: 0,
