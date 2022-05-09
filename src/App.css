@@ -42,7 +42,8 @@ form {
 }
 .budgetUl{
   list-style-type:none;
-  width: 400px
+  width: 400px;
+  border-radius: 15px; 
 }
 .expenseTotal {
   margin:  auto;
