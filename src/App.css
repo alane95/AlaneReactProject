@@ -13,22 +13,37 @@ body{
  } */
 
 form {
-  width: 200px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   margin: 5px 0;
-  padding-left: 8px;
+  padding: 10px;
+}
+.theExpenses{
+  /* float: right;
+  margin-bottom: 200px; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 80px;
+  margin-right: 100px;
+}
+.budgeting{
+  margin-left: 100px;
 }
 
-ul{
+.expenseUl{
   /* border: 1px solid black; */
   background-color: white;
   border-radius: 15px; 
-  list-style-type:none
-  /* width: 100px;
-  height: 150px; */
+  list-style-type:none;
+  width: 400px;
+  /* height: 430px; */
 }
-
+.budgetUl{
+  list-style-type:none;
+  width: 400px
+}
 .expenseTotal {
   margin:  auto;
   width: 150px;
@@ -38,10 +53,27 @@ ul{
   border: 1px solid #cdcbd0;
   display: flex;
   justify-content: space-evenly;
+  
 }
+/* .inner{
+  height: 75px;
+  width: 75px;
+  border-radius: 50px;
+  border: 2px solid red;
+} */
 .expenseBoard{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  border: 5px solid rgb(8, 0, 8);
+  height: 680px;
+  width: 430px;
+  margin-left: 390px;
+  margin-bottom: 60px;
+  background-color: black;
   /* /* margin: 8px; */
+}
+.categoryList{
+padding-top: 150px;
+color: white;
 }

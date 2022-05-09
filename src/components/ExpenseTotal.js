@@ -4,7 +4,8 @@ const ExpenseTotal =(props)=> {
 
     return (
         <div className="expenseTotal">
-            {props.categoryProps}
+            <p className="categoryList">{props.categoryProps}</p>
+            <div className="inner"></div>
         </div>
     )
 }

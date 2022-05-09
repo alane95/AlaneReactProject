@@ -35,33 +35,39 @@ const Budget = (props) => {
                     type="text"
                     name="name"
                     value={props.bitemProps.name}
-                    placeholder="name"
-                    onChange={handleChange} />
+                    placeholder="Budget name"
+                    onChange={handleChange} required/>
                 <input
                     type="number"
                     name="amount"
                     value={props.bitemProps.amount}
                     placeholder="Budget Amount"
-                    onChange={handleChange} />
+                    onChange={handleChange} required/>
                 <input
                     type="month"
                     name="month"
                     value={props.bitemProps.month}
                     placeholder="Month"
-                    onChange={handleChange} />
+                    onChange={handleChange} required/>
                     
                 <button type="submit">
                     Add Budget
                 </button>
             </form>
-            <ul>
+            <ul className="budgetUl">
                 {
-                    props.blistProps.map((item) => {
+                    props.blistProps.map((item, key) => {
                         return (
-                            <li>
-                               <h2>{item.name}</h2> 
-                                <p>${item.amount}</p>
-                                {item.month}
+                            <li key={key}>
+                               <h2> {item.name } ${item.amount } {item.month} </h2> 
+                                {/* <p>${item.amount}</p>
+                                {item.month} */}
+                                <button className="X-button" onClick={() => {
+                                    let budgets = [...props.blistProps]
+                                 budgets.splice(key,1)
+                                 props.setbListProps(budgets)
+                             }
+                             }>X</button>
                             </li>
                         )
                     })

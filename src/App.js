@@ -31,7 +31,7 @@ const newExpense = {
 const budgetItem = {
   name: "",
   amount: "",
-  category: ["housing", "food", "insurance", "personal spending", "savings", "side projects" ],
+  category: ["Housing", "Food", "Insurance", "Personal Spending", "Savings", "Side Projects" ],
   month: "",
 }
 // const expenseCategoryTotals = {
@@ -52,24 +52,24 @@ function App() {
   const [expenseSum, setExpenseSum] = useState(0)
   const [categoryExpenses, setCategoryExpenses] = useState(newExpense)
 
-  const foodExpenses = allExpenses.filter((item)=>
-    allExpenses.category === "food"
-  )
+  // const foodExpenses = allExpenses.filter((item)=>
+  //   allExpenses.category === "food"
+  // )
 
   // const housingExpenses = allExpenses.filter((item)=>
   //   allExpenses.category === "housing"
   // )
 
-  const insuranceExpenses = allExpenses.filter((item)=>
-    allExpenses.category === "insurance"
-  )
+//   const insuranceExpenses = allExpenses.filter((item)=>
+//     allExpenses.category === "insurance"
+//   )
 
-  const personalSpendingExpenses = allExpenses.filter((item)=>
-    allExpenses.category === "Personal Savings"
-    )
-  const savingsExpenses = allExpenses.filter((item)=>
-  allExpenses.category === "savings"
-)
+//   const personalSpendingExpenses = allExpenses.filter((item)=>
+//     allExpenses.category === "Personal Savings"
+//     )
+//   const savingsExpenses = allExpenses.filter((item)=>
+//   allExpenses.category === "savings"
+// )
   
 // console.log(housingExpenses)
   // const[allBudgetItems, setAllBudgetItems]= useState([])
@@ -87,6 +87,7 @@ function App() {
         setbItemProps = {setbItem}
         budgetSumProps = {budgetSum}
         setBudgetSumProps = {setBudgetSum}
+        
       />
        <h4>Monthly Budget:{budgetSum}</h4> 
 {/* <p>{budgetSum}</p> */}
@@ -104,17 +105,19 @@ function App() {
         categoryExpensesProps = {categoryExpenses}
       />
       <h3>Monthly Expense Total: {expenseSum}</h3> 
-<div className='expenseBoard'>
+  {/* <div className='expenseBoard'>  
 {
-      newExpense.category.map((item) => {
+      budgetItem.category.map((item) => {
         return(
-      <ExpenseTotal categoryProps = {item} />
+      <ExpenseTotal categoryProps = {item}/>
+      
         )
       })
-         }
-          {/* {expenseSum} */}
-         
-</div> 
+        } */}
+          {/* {expenseSum}
+          {expenseSum} */}
+          {/* {categoryExpenses} */}
+{/* </div>     */}
     </div>
   );
 }
